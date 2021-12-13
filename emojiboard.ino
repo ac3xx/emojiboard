@@ -5,6 +5,10 @@
 #define KEYBOARD_INTERFACE 0
 
 #define BACKSPACE_KEY 0x7F
+#define ENTER_KEY 0xA
+#define TAB_KEY 0x9
+#define ESC_KEY 0x1B
+#define UNKNOWN_KEY 0x0
 
 USBHost myusb;
 KeyboardController keyboard1(myusb);
@@ -42,7 +46,7 @@ void OnPress(int key)
     return;
   }
 
-  if (key >= 65 && key < 91) { key += 32; } // I am too lazy to implement raw onpress logic instead
+  if (key >= 'A' && key <= 'Z') { key += 32; } // I am too lazy to implement raw onpress logic instead
   
   const char *mappedEmoji;
   
@@ -108,18 +112,18 @@ void OnPress(int key)
     case ']': mappedEmoji = ":gun:"; break;
     case ';': mappedEmoji = ":rice:"; break;
     case '\'': mappedEmoji = ":x:"; break;
-    case '#': case 0: mappedEmoji = ":shh:"; break; // weird thing on my logitech keyboard, might be global
+    case '#': case UNKNOWN_KEY: mappedEmoji = ":shh:"; break; // certain keys don't translate properly
     case ',': mappedEmoji = ":roll_of_paper:"; break;
     case '.': mappedEmoji = ":heavy_minus_sign:"; break;
     case '/': mappedEmoji = ":sadseal:"; break;
     case KEYD_INSERT: mappedEmoji = ":netcraft-rotate:"; break;
     case KEYD_HOME: mappedEmoji = ":netcraft-love:"; break;
-    case 10: mappedEmoji = ":superhero:"; break; // enter key
+    case ENTER_KEY: mappedEmoji = ":superhero:"; break;
     case KEYD_DELETE: mappedEmoji = ":rip:"; break;
-    case 9: mappedEmoji = ":thunk:"; break; // tab key
+    case TAB_KEY: mappedEmoji = ":thunk:"; break;
     case '-': mappedEmoji = ":galaxy_brain:"; break;
     case '=': mappedEmoji = ":runner:"; break;
-    case 27: mappedEmoji = ":coronavirus:"; break;
+    case ESC_KEY: mappedEmoji = ":coronavirus:"; break;
     case '`': mappedEmoji = ":pray:"; break;
     case KEYD_PAGE_UP: mappedEmoji = ":party-parrot:"; break;
     case KEYD_PAGE_DOWN: mappedEmoji = ":bikeshed:"; break;
@@ -135,6 +139,6 @@ void OnPress(int key)
     // poo
     default: mappedEmoji = ":poo:";
   }
-  
+
   Keyboard.write(mappedEmoji);
 }
