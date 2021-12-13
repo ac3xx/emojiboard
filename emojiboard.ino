@@ -39,7 +39,7 @@ void OnPress(int key)
 
   // sorry zack
   if (randNumber == 0) {
-    Keyboard.write(":santa: :jl: :jnc-spin: :vasko-the-legend: :tshirt:");
+    Keyboard.write(":santa: :jl: :jnc-spin: :super_sains: :vasko-the-legend: :tshirt:");
     return;
   } else if (randNumber <= 4) {
     Keyboard.write(":eggplant:");
@@ -112,7 +112,7 @@ void OnPress(int key)
     case ']': mappedEmoji = ":gun:"; break;
     case ';': mappedEmoji = ":rice:"; break;
     case '\'': mappedEmoji = ":x:"; break;
-    case '#': case UNKNOWN_KEY: mappedEmoji = ":shh:"; break; // certain keys don't translate properly
+    case '|': case '#': mappedEmoji = ":shh:"; break;
     case ',': mappedEmoji = ":roll_of_paper:"; break;
     case '.': mappedEmoji = ":heavy_minus_sign:"; break;
     case '/': mappedEmoji = ":sadseal:"; break;
@@ -127,6 +127,7 @@ void OnPress(int key)
     case '`': mappedEmoji = ":pray:"; break;
     case KEYD_PAGE_UP: mappedEmoji = ":party-parrot:"; break;
     case KEYD_PAGE_DOWN: mappedEmoji = ":bikeshed:"; break;
+    case UNKNOWN_KEY: mappedEmoji = ":netcraft-bulge:"; break;
 
     // some momentos
     case ' ': mappedEmoji = ":jl:"; break;
