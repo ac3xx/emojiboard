@@ -30,7 +30,7 @@ void OnPress(int key)
 {
   Serial.printf("key %i\n", key);
 
-  if (key == BACKSPACE_KEY) {
+  if (key == BACKSPACE_KEY || key == ENTER_KEY) {
     Keyboard.write(key);
     return;
   }
@@ -74,7 +74,7 @@ void OnPress(int key)
     case 'z': mappedEmoji = ":potato:"; break;
     case 'x': mappedEmoji = ":flag-lk:"; break;
     case 'c': mappedEmoji = ":motorway:"; break;
-    case 'v': mappedEmoji = ":bowl_with_spoon"; break;
+    case 'v': mappedEmoji = ":bowl_with_spoon:"; break;
     case 'b': mappedEmoji = ":cat:"; break;
     case 'n': mappedEmoji = ":shoe:"; break;
     case 'm': mappedEmoji = ":curry:"; break;
@@ -118,7 +118,6 @@ void OnPress(int key)
     case '/': mappedEmoji = ":sadseal:"; break;
     case KEYD_INSERT: mappedEmoji = ":netcraft-rotate:"; break;
     case KEYD_HOME: mappedEmoji = ":netcraft-love:"; break;
-    case ENTER_KEY: mappedEmoji = ":superhero:"; break;
     case KEYD_DELETE: mappedEmoji = ":rip:"; break;
     case TAB_KEY: mappedEmoji = ":thunk:"; break;
     case '-': mappedEmoji = ":galaxy_brain:"; break;
